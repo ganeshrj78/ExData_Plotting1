@@ -11,13 +11,14 @@ filter_date <- as.Date(c("2007-02-01","2007-02-02"), "%Y-%m-%d")
 
 final_data <- subset(power_cdata, Date %in% filter_date)
 
+dt= strptime(paste(final_data$Date, final_data$Time), "%d/%m/%Y %H:%M:%S")
+
 # Filter out the data to be plotted.  
 ## Test out to see the graph comes fine: 
-## hist(as.numeric(final_data$Global_active_power), col="red")
+##plot(dt, as.numeric(final_data$Global_active_power)))
 
-## Write the output to a Plot1.png file
+## Write the output to a Plot2.png file
 
-dt= strptime(paste(final_data$Date, final_data$Time), "%d/%m/%Y %H:%M:%S")
 png("C:\\R\\CourseraR\\Exploratory_data_analysis\\Plot2.png", width=480, height=480)
-plot(dt, as.numeric(final_data$Global_active_power), type="1", xlab="", ylab="Global Active Power(KW)")
+plot(dt, as.numeric(final_data$Global_active_power), type="1", xlab="", ylab="Global Active Power(kilowatts)")
 dev.off()
